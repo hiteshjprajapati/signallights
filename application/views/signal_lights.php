@@ -72,15 +72,12 @@
 			var currentIndex = 0;
 			var timeouts = [];
 			$("#startBtn").click(function() {
-				// Get user inputs
 				var sequenceA = $("#sequencea").val().toUpperCase();
 				var sequenceB = $("#sequenceb").val().toUpperCase();
 				var sequenceC = $("#sequencec").val().toUpperCase();
 				var sequenceD = $("#sequenced").val().toUpperCase();
 				var greenIntervalInput = parseInt($("#greenInterval").val());
 				var yellowIntervalInput = parseInt($("#yellowInterval").val());
-
-				// Validate inputs
 				if (sequenceA === '' || sequenceB === '' || sequenceC === '' || sequenceD === '') {
 					alert("All sequence fields are required.");
 					return;
@@ -97,8 +94,6 @@
 					alert("Green interval and yellow interval must be positive numbers.");
 					return;
 				}
-				
-				// Store validated inputs
 				sequence = [sequenceA, sequenceB, sequenceC, sequenceD];
 				greenInterval = greenIntervalInput * 1000;
 				yellowInterval = yellowIntervalInput * 1000;
@@ -125,7 +120,8 @@
 						}
 					},
 					error: function(xhr, status, error) {
-						// Handle error
+						alert("Something wrong, please try again!");
+						location.reload();
 					}
 				});
 			});
@@ -134,7 +130,7 @@
 			for (var i = 0; i < str.length; i++) {
 				var letter = str[i];
 				if (letters[letter]) {
-					return true; // Found a duplicate
+					return true;
 				}
 				letters[letter] = true;
 			}
